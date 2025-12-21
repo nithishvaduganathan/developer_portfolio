@@ -1,6 +1,6 @@
 {
-  "name": "developer-portfolio",
-  "description": "Portfolio of Abu Said",
+  "name": " Python & AI Developer Portfolio",
+  "description": "Portfolio of Nithish Vaduganathan",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,10 +14,10 @@
     "@next/third-parties": "^16.0.1",
     "axios": "^1.6.8",
     "lottie-react": "^2.4.1",
-    "next": "^16.0.1",
+    "next": "^16.1.0",
     "nodemailer": "^6.9.15",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "react-fast-marquee": "^1.6.2",
     "react-google-recaptcha": "^3.1.0",
     "react-icons": "^4.11.0",
