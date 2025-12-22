@@ -13,7 +13,11 @@ export const metadata = {
   title: "Nithish Vaduganathan | Python & AI Developer Portfolio",
   description:
     "Portfolio of Nithish Vaduganathan, a Python and AI Developer specializing in machine learning, NLP, Flask, and full-stack web development. Explore projects, skills, and experience.",
-};
+  verification: {
+    google: "EKMd1GxtNjvpCe5ecHGa8xH4aoYkeDWqYLv3PbmD_bQ",
+  },
+
+  };
 
 export default function RootLayout({ children }) {
   return (
