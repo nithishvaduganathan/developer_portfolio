@@ -16,39 +16,30 @@ export const metadata = {
   verification: {
     google: "EKMd1GxtNjvpCe5ecHGa8xH4aoYkeDWqYLv3PbmD_bQ",
   },
-
-  };
+ other: {
+    "application/ld+json": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Nithish Vaduganathan",
+      url: "https://nithishvaduganathan.vercel.app",
+      jobTitle: "Python & AI Developer",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Thiruvarur",
+        addressRegion: "Tamil Nadu",
+        addressCountry: "India",
+      },
+      sameAs: [
+        "https://github.com/nithishvaduganathan",
+        "https://www.linkedin.com/in/nithishvaduganathan",
+      ],
+    }),
+  },
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        {/* ✅ Person Schema */}
-        <Script
-          id="person-schema"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Nithish Vaduganathan",
-              url: "https://nithishvaduganathan.vercel.app",
-              jobTitle: "Python & AI Developer",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Thiruvarur",
-                addressRegion: "Tamil Nadu",
-                addressCountry: "India",
-              },
-              sameAs: [
-                "https://github.com/nithishvaduganathan",
-                "https://www.linkedin.com/in/nithishvaduganathan",
-              ],
-            }),
-          }}
-        />
-        </head>
       <body className={inter.className}>
         <ToastContainer />
         <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
