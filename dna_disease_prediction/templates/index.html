@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block title %}Home - DNA Disease Prediction{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-lg-12 text-center">
+            <h1 class="display-4 mb-3">
+                <i class="bi bi-dna text-primary"></i> 
+                DNA Disease Prediction System
+            </h1>
+            <p class="lead text-muted">
+                Advanced machine learning-based disease prediction from DNA sequences
+            </p>
+        </div>
+    </div>
+
+    <!-- Input Form -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-input-cursor"></i> Enter DNA Sequence
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form id="predictionForm">
+                        <!-- Text Input -->
+                        <div class="mb-4">
+                            <label for="sequence" class="form-label">
+                                <strong>Paste DNA Sequence:</strong>
+                            </label>
+                            <textarea 
+                                class="form-control font-monospace" 
+                                id="sequence" 
+                                name="sequence" 
+                                rows="6" 
+                                placeholder="Enter DNA sequence (minimum 50 nucleotides, only A, T, C, G)&#10;Example: ATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCG..."
+                            ></textarea>
+                            <small class="form-text text-muted">
+                                Valid nucleotides: A, T, C, G (case insensitive)
+                            </small>
+                        </div>
+
+                        <div class="text-center mb-3">
+                            <strong>OR</strong>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div class="mb-4">
+                            <label for="file" class="form-label">
+                                <strong>Upload FASTA/Text File:</strong>
+                            </label>
+                            <input 
+                                class="form-control" 
+                                type="file" 
+                                id="file" 
+                                name="file" 
+                                accept=".txt,.fasta,.fa"
+                            >
+                            <small class="form-text text-muted">
+                                Supports .txt, .fasta, .fa files
+                            </small>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                                <i class="bi bi-search"></i> Predict Disease
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Loading Spinner -->
+                    <div id="loadingSpinner" class="text-center mt-4" style="display: none;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Analyzing DNA sequence...</p>
+                    </div>
+
+                    <!-- Error Alert -->
+                    <div id="errorAlert" class="alert alert-danger mt-4" style="display: none;" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <span id="errorMessage"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="row mt-4">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-body text-center">
+                            <i class="bi bi-shield-check text-primary" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mt-2">Validation</h5>
+                            <p class="card-text small">
+                                Ensures only valid nucleotides (A, T, C, G) are accepted
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-body text-center">
+                            <i class="bi bi-cpu text-success" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mt-2">ML Powered</h5>
+                            <p class="card-text small">
+                                Random Forest classifier with k-mer feature extraction
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-info">
+                        <div class="card-body text-center">
+                            <i class="bi bi-graph-up text-info" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mt-2">Statistics</h5>
+                            <p class="card-text small">
+                                Detailed sequence analysis with GC content and more
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('predictionForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const errorAlert = document.getElementById('errorAlert');
+    const errorMessage = document.getElementById('errorMessage');
+    
+    // Hide error alert
+    errorAlert.style.display = 'none';
+    
+    // Show loading spinner
+    submitBtn.disabled = true;
+    loadingSpinner.style.display = 'block';
+    
+    try {
+        const formData = new FormData(this);
+        
+        const response = await fetch('/predict', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.error || 'Prediction failed');
+        }
+        
+        // Redirect to result page
+        window.location.href = '/result';
+        
+    } catch (error) {
+        errorMessage.textContent = error.message;
+        errorAlert.style.display = 'block';
+        submitBtn.disabled = false;
+        loadingSpinner.style.display = 'none';
+    }
+});
+</script>
+{% endblock %}
