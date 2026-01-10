@@ -87,6 +87,12 @@ dna_disease_prediction/
    python app.py
    ```
    The application will start on `http://localhost:5000`
+   
+   **Note:** For production deployment, set `FLASK_DEBUG=false` as an environment variable to disable debug mode:
+   ```bash
+   export FLASK_DEBUG=false
+   python app.py
+   ```
 
 ## Usage
 
@@ -206,6 +212,8 @@ Risk levels are determined based on prediction confidence:
 - File upload size limits
 - SQL injection prevention (parameterized queries)
 - XSS protection through Flask's auto-escaping
+- **Debug mode disabled by default** (set `FLASK_DEBUG=true` only for development)
+- Use production WSGI server (e.g., Gunicorn) for deployment
 
 ## Troubleshooting
 
