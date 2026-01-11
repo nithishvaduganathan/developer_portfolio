@@ -21,7 +21,7 @@ export const metadata = {
       "@context": "https://schema.org",
       "@type": "Person",
       name: "Nithish Vaduganathan",
-      url: "https://nithishvaduganathan.vercel.app",
+      url: "https://nithishvaduganathan.tech",
       jobTitle: "Python & AI Developer",
       address: {
         "@type": "PostalAddress",
