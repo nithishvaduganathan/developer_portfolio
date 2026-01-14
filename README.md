@@ -41,19 +41,6 @@ Version Control: Git, GitHub
 
 ---
 
-## 📂 Repository Structure
-
-portfolio/
-├── public/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── assets/
-├── README.md
-├── package.json
-
----
-
 ## 🌍 Live Preview
 
 👉 https://nithishvaduganathan.tech
@@ -62,8 +49,8 @@ portfolio/
 
 ## 📬 Contact
 
-Email: your-email@example.com  
-LinkedIn: https://linkedin.com/in/your-profile  
+Email: nithishvaduganathan07@gmail.com
+LinkedIn: https://www.linkedin.com/in/nithishvaduganathan
 GitHub: https://github.com/nithishvaduganathan  
 
 ---
