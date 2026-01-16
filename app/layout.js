@@ -14,14 +14,14 @@ export const metadata = {
   description:
     "Portfolio of Nithish Vaduganathan, a Python and AI Developer specializing in machine learning, NLP, Flask, and full-stack web development. Explore projects, skills, and experience.",
   verification: {
-    google: "EKMd1GxtNjvpCe5ecHGa8xH4aoYkeDWqYLv3PbmD_bQ",
+    google: "Fw-kfqU4pOvSaknhy19YJIkjHM8Yyj4fn9ThHKfG3cE",
   },
  other: {
     "application/ld+json": JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
       name: "Nithish Vaduganathan",
-      url: "https://nithishvaduganathan.vercel.app",
+      url: "https://nithishvaduganathan.tech",
       jobTitle: "Python & AI Developer",
       address: {
         "@type": "PostalAddress",
