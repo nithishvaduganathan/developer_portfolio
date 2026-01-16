@@ -109,15 +109,22 @@ rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
     // Product images - read by all, write by authenticated users
+    // File size limited to 5MB, images only
     match /products/{allPaths=**} {
       allow read: if true;
       allow write: if request.auth != null 
                    && request.resource.size < 5 * 1024 * 1024  // 5MB max
                    && request.resource.contentType.matches('image/.*');
+      allow delete: if request.auth != null;
     }
   }
 }
 ```
+
+**Security Note**: The current storage rules allow any authenticated user to upload images. For production use with multiple users, consider:
+- Implementing Cloud Functions to validate admin status before uploads
+- Using Firebase Admin SDK for admin-only operations
+- Adding custom claims to user tokens for role-based access
 
 Click **Publish**
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/config/firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
@@ -13,9 +13,19 @@ export default function AuthPage() {
   const [otp, setOtp] = useState('');
   const [verificationId, setVerificationId] = useState('');
   const [loading, setLoading] = useState(false);
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    // Initialize recaptcha on client side only
+    if (typeof window !== 'undefined' && !recaptchaReady) {
+      setRecaptchaReady(true);
+    }
+  }, [recaptchaReady]);
+
   const setupRecaptcha = () => {
+    if (typeof window === 'undefined') return null;
+    
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
         size: 'invisible',
@@ -28,6 +38,7 @@ export default function AuthPage() {
         }
       });
     }
+    return window.recaptchaVerifier;
   };
 
   const handleSendOTP = async (e) => {
@@ -41,20 +52,25 @@ export default function AuthPage() {
     setLoading(true);
     
     try {
-      setupRecaptcha();
-      const appVerifier = window.recaptchaVerifier;
+      const appVerifier = setupRecaptcha();
+      if (!appVerifier) {
+        throw new Error('Recaptcha not ready');
+      }
+      
       const formattedPhone = `+91${phoneNumber}`;
       
       const confirmationResult = await signInWithPhoneNumber(auth, formattedPhone, appVerifier);
       setVerificationId(confirmationResult.verificationId);
-      window.confirmationResult = confirmationResult;
+      if (typeof window !== 'undefined') {
+        window.confirmationResult = confirmationResult;
+      }
       toast.success('OTP sent to your phone!');
     } catch (error) {
       console.error('Error sending OTP:', error);
       toast.error('Failed to send OTP. Please try again.');
       
       // Reset recaptcha on error
-      if (window.recaptchaVerifier) {
+      if (typeof window !== 'undefined' && window.recaptchaVerifier) {
         window.recaptchaVerifier.clear();
         window.recaptchaVerifier = null;
       }
@@ -74,6 +90,10 @@ export default function AuthPage() {
     setLoading(true);
     
     try {
+      if (typeof window === 'undefined' || !window.confirmationResult) {
+        throw new Error('No confirmation result available');
+      }
+      
       const result = await window.confirmationResult.confirm(otp);
       toast.success('Successfully logged in!');
       

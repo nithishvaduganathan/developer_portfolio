@@ -1,2 +1,0 @@
-This is a placeholder file. Replace with actual product images.
-For now, we'll use a data URI for the placeholder image in the component.

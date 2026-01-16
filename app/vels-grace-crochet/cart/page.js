@@ -83,12 +83,13 @@ export default function CartPage() {
             <div className="vgc-card">
               {cart.map(item => (
                 <div key={item.id} className="vgc-cart-item">
-                  <div style={{ position: 'relative', width: '80px', height: '80px', flexShrink: 0 }}>
+                  <div style={{ position: 'relative', width: '80px', height: '80px', flexShrink: 0, background: '#e8f5e9' }}>
                     <Image
-                      src={item.imageUrl || '/placeholder-product.jpg'}
+                      src={item.imageUrl || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect width="80" height="80" fill="%23e8f5e9"/%3E%3C/svg%3E'}
                       alt={item.name}
                       fill
                       style={{ objectFit: 'cover', borderRadius: '8px' }}
+                      onError={(e) => { e.target.style.display = 'none'; }}
                     />
                   </div>
                   
