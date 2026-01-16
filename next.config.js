@@ -21,6 +21,16 @@ module.exports = {
         hostname: 'media2.dev.to',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.firebasestorage.app',
+        pathname: '**',
+      },
     ],
   },
 }

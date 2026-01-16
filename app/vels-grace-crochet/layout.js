@@ -1,9 +1,6 @@
-import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Vels Grace Crochet | Handmade Crochet Products",
@@ -14,7 +11,7 @@ export const metadata = {
 export default function VelsGraceCrochetLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} vgc-body`}>
+      <body className="vgc-body" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
         <ToastContainer position="top-right" autoClose={3000} />
         {children}
       </body>
