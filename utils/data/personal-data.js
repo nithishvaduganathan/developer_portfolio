@@ -7,11 +7,11 @@ export const personalData = {
   phone: '+91 8531977455',
   address: 'Thiruvarur,Tamil nadu,india - 609503',
   github: 'https://github.com/nithishvaduganathan',
-  facebook: 'https://www.facebook.com/abusaid.riyaz/',
+  facebook: 'https://www.facebook.com/nithishvaduganathan/',
   linkedIn: 'https://www.linkedin.com/in/nithishvaduganathan/',
   twitter: 'https://twitter.com/nithishv',
-  stackOverflow: 'https://stackoverflow.com/users/16840768/abu-said',
+  stackOverflow: 'https://stackoverflow.com/users/16840768/nithishvaduganathan',
   leetcode: "https://leetcode.com/nithishvaduganathan/",
-  devUsername: "nithishvaduganathan",
+  devUsername: "nithish_vaduganathan",
   resume: "https://drive.google.com/file/d/18dD1CSJCR3YyNru7nZPJyOgRvaqmYAQW/view?usp=drivesdk"
 }

@@ -1,84 +1,77 @@
-// @flow strict
+"use client";
+
 import { educations } from "@/utils/data/educations";
-import Image from "next/image";
-import { BsPersonWorkspace } from "react-icons/bs";
-import lottieFile from '../../../assets/lottie/study.json';
-import AnimationLottie from "../../helper/animation-lottie";
-import GlowCard from "../../helper/glow-card";
+import { useEffect, useState } from "react";
+import { MdSchool } from "react-icons/md";
 
 function Education() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById("education");
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
+  }, []);
+
   return (
-    <div id="education" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <Image
-        src="/section.svg"
-        alt="Hero"
-        width={1572}
-        height={795}
-        className="absolute top-0 -z-10"
-      />
-      <div className="flex justify-center -translate-y-[1px]">
-        <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent  w-full" />
+    <section id="education" className="section relative">
+      <div className="container">
+        {/* Section Header */}
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-cyan-400 font-mono">05. </span>
+            Education
+          </h2>
+          <div className="h-1 w-32 bg-gradient-to-r from-cyan-400 to-transparent"></div>
         </div>
-      </div>
 
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Educations
-          </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-        </div>
-      </div>
+        {/* Education Cards */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {educations.map((edu, index) => (
+            <div
+              key={edu.id}
+              className="card group"
+              style={{ animationDelay: `${index * 200}ms` }}
+            >
+              {/* Duration Badge */}
+              <div className="inline-block px-4 py-1 mb-4 text-xs font-mono bg-purple-400/10 text-purple-400 rounded-full border border-purple-400/30">
+                {edu.duration}
+              </div>
 
-      <div className="py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          <div className="flex justify-center items-start">
-            <div className="w-3/4 h-3/4">
-              <AnimationLottie animationPath={lottieFile} />
+              {/* Icon and Title */}
+              <div className="flex items-start gap-4 mb-3">
+                <div className="text-purple-400 mt-1">
+                  <MdSchool size={28} />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+                    {edu.title}
+                  </h3>
+                  <p className="text-slate-400 leading-relaxed">{edu.institution}</p>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div>
-            <div className="flex flex-col gap-6">
-              {
-                educations.map(education => (
-                  <GlowCard key={education.id} identifier={`education-${education.id}`}>
-                    <div className="p-3 relative text-white">
-                      <Image
-                        src="/blur-23.svg"
-                        alt="Hero"
-                        width={1080}
-                        height={200}
-                        className="absolute bottom-0 opacity-80"
-                      />
-                      <div className="flex justify-center">
-                        <p className="text-xs sm:text-sm text-[#16f2b3]">
-                          {education.duration}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-x-8 px-3 py-5">
-                        <div className="text-violet-500  transition-all duration-300 hover:scale-125">
-                          <BsPersonWorkspace size={36} />
-                        </div>
-                        <div>
-                          <p className="text-base sm:text-xl mb-2 font-medium uppercase">
-                            {education.title}
-                          </p>
-                          <p className="text-sm sm:text-base">{education.institution}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </GlowCard>
-                ))
-              }
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default Education;

@@ -11,10 +11,10 @@ export const experiences = [
     company: "IBM skillsbuild",
     duration: "(Apr 2025 - May 2025)"
   },
-/*   {
+  {
     id: 3,
-    title: "Self Employed",
-    company: "Code and build something in everyday.",
-    duration: "(Jan 2018 - Present)"
-  } */
+    title: "Operation Intern",
+    company: "Sparktales Learning Solutions Pvt Ltd",
+    duration: "(Dec 2025 - Feb 2026)"
+  }
 ]

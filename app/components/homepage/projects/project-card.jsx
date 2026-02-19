@@ -1,71 +1,64 @@
-// @flow strict
+"use client";
 
-import * as React from 'react';
+import Link from 'next/link';
+import { BsGithub } from 'react-icons/bs';
+import { FiExternalLink } from 'react-icons/fi';
 
 function ProjectCard({ project }) {
-
   return (
-    <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full">
-      <div className="flex flex-row">
-        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-        <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
-      </div>
-      <div className="px-4 lg:px-8 py-3 lg:py-5 relative">
-        <div className="flex flex-row space-x-1 lg:space-x-2 absolute top-1/2 -translate-y-1/2">
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-red-400"></div>
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-orange-400"></div>
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-green-200"></div>
+    <div className="card h-full flex flex-col group">
+      {/* Project Header */}
+      <div className="flex items-start justify-between mb-4">
+        <div className="flex-1">
+          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+            {project.name}
+          </h3>
+          <p className="text-sm text-slate-400 font-mono">{project.role}</p>
         </div>
-        <p className="text-center ml-3 text-[#16f2b3] text-base lg:text-xl">
-          {project.name}
-        </p>
-      </div>
-      <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
-        <code className="font-mono text-xs md:text-sm lg:text-base">
-          <div className="blink">
-            <span className="mr-2 text-pink-500">const</span>
-            <span className="mr-2 text-white">project</span>
-            <span className="mr-2 text-pink-500">=</span>
-            <span className="text-gray-400">{'{'}</span>
-          </div>
-          <div>
-            <span className="ml-4 lg:ml-8 mr-2 text-white">name:</span>
-            <span className="text-gray-400">{`'`}</span>
-            <span className="text-amber-300">{project.name}</span>
-            <span className="text-gray-400">{`',`}</span>
-          </div>
 
-          <div className="ml-4 lg:ml-8 mr-2">
-            <span className=" text-white">tools:</span>
-            <span className="text-gray-400">{` ['`}</span>
-            {
-              project.tools.map((tag, i) => (
-                <React.Fragment key={i}>
-                  <span className="text-amber-300">{tag}</span>
-                  {
-                    project.tools?.length - 1 !== i &&
-                    <span className="text-gray-400">{`', '`}</span>
-                  }
-                </React.Fragment>
-              ))
-            }
-            <span className="text-gray-400">{"],"}</span>
-          </div>
-          <div>
-            <span className="ml-4 lg:ml-8 mr-2 text-white">myRole:</span>
-            <span className="text-orange-400">{project.role}</span>
-            <span className="text-gray-400">,</span>
-          </div>
-          <div className="ml-4 lg:ml-8 mr-2">
-            <span className="text-white">Description:</span>
-            <span className="text-cyan-400">{' ' + project.description}</span>
-            <span className="text-gray-400">,</span>
-          </div>
-          <div><span className="text-gray-400">{`};`}</span></div>
-        </code>
+        {/* Links */}
+        <div className="flex gap-3">
+          {project.code && (
+            <Link
+              href={project.code}
+              target="_blank"
+              className="text-slate-400 hover:text-cyan-400 transition-colors duration-300"
+              aria-label="View Code"
+            >
+              <BsGithub size={20} />
+            </Link>
+          )}
+          {project.demo && (
+            <Link
+              href={project.demo}
+              target="_blank"
+              className="text-slate-400 hover:text-cyan-400 transition-colors duration-300"
+              aria-label="View Demo"
+            >
+              <FiExternalLink size={20} />
+            </Link>
+          )}
+        </div>
+      </div>
+
+      {/* Description */}
+      <p className="text-slate-300 text-sm mb-4 flex-1 leading-relaxed">
+        {project.description}
+      </p>
+
+      {/* Tech Stack */}
+      <div className="flex flex-wrap gap-2 mt-auto">
+        {project.tools.map((tool, index) => (
+          <span
+            key={index}
+            className="px-3 py-1 text-xs font-mono bg-navy-dark text-cyan-400 rounded-full border border-cyan-400/30 hover:border-cyan-400 transition-colors duration-300"
+          >
+            {tool}
+          </span>
+        ))}
       </div>
     </div>
   );
-};
+}
 
 export default ProjectCard;
