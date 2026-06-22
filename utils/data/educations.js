@@ -2,13 +2,13 @@ export const educations = [
   {
     id: 1,
     title: "Bachelor Degree",
-    duration: "2022 - 2026",
+    duration: "2020 - 2024",
     institution: "Sir issac newton college of engineering and technology",
   },
   {
     id: 2,
     title: "Higher Secondary Education",
-    duration: "2020 - 2022",
+    duration: "2018 - 2020",
     institution: "Government Higher Secondary School Poonthottam",
   },
 /*   {
