@@ -1,0 +1,502 @@
+/* Vels Grace Crochet Global Styles */
+
+.vgc-body {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  min-height: 100vh;
+  color: #5d4037;
+}
+
+.vgc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.vgc-header {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid rgba(93, 64, 55, 0.1);
+}
+
+.vgc-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5d4037;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vgc-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vgc-nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.vgc-nav-link {
+  color: #5d4037;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.vgc-nav-link:hover {
+  color: #3e2723;
+}
+
+.vgc-btn {
+  background: #5d4037;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.vgc-btn:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(93, 64, 55, 0.3);
+}
+
+.vgc-btn-outline {
+  background: transparent;
+  color: #5d4037;
+  border: 2px solid #5d4037;
+}
+
+.vgc-btn-outline:hover {
+  background: #5d4037;
+  color: #fff;
+}
+
+.vgc-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(93, 64, 55, 0.1);
+  transition: all 0.3s ease;
+}
+
+.vgc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(93, 64, 55, 0.2);
+}
+
+.vgc-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.vgc-product-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.vgc-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(93, 64, 55, 0.2);
+}
+
+.vgc-product-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.vgc-product-info {
+  padding: 1rem;
+}
+
+.vgc-product-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #5d4037;
+  margin-bottom: 0.5rem;
+}
+
+.vgc-product-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5d4037;
+  margin-bottom: 0.5rem;
+}
+
+.vgc-product-description {
+  color: #6d4c41;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.vgc-cart-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.vgc-cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #d32f2f;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.vgc-footer {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 2rem 0;
+  margin-top: 4rem;
+  border-top: 2px solid rgba(93, 64, 55, 0.1);
+  text-align: center;
+  color: #5d4037;
+}
+
+.vgc-hero {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.vgc-hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #5d4037;
+  margin-bottom: 1rem;
+}
+
+.vgc-hero-subtitle {
+  font-size: 1.25rem;
+  color: #6d4c41;
+  margin-bottom: 2rem;
+}
+
+.vgc-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.vgc-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.vgc-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(93, 64, 55, 0.1);
+}
+
+.vgc-modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5d4037;
+}
+
+.vgc-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #5d4037;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.vgc-close-btn:hover {
+  background: rgba(93, 64, 55, 0.1);
+}
+
+.vgc-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.vgc-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #5d4037;
+}
+
+.vgc-input,
+.vgc-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid rgba(93, 64, 55, 0.2);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #5d4037;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.vgc-input:focus,
+.vgc-textarea:focus {
+  outline: none;
+  border-color: #5d4037;
+  box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.1);
+}
+
+.vgc-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.vgc-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid rgba(93, 64, 55, 0.2);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #5d4037;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
+
+.vgc-error {
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.vgc-loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.25rem;
+  color: #5d4037;
+}
+
+.vgc-empty {
+  text-align: center;
+  padding: 3rem;
+  color: #6d4c41;
+}
+
+.vgc-admin-panel {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.vgc-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .vgc-hero-title {
+    font-size: 2rem;
+  }
+
+  .vgc-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .vgc-product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .vgc-nav-links {
+    gap: 1rem;
+  }
+
+  .vgc-modal {
+    padding: 1.5rem;
+  }
+
+  .vgc-admin-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cart Styles */
+.vgc-cart-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(93, 64, 55, 0.1);
+}
+
+.vgc-cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.vgc-cart-item-info {
+  flex: 1;
+}
+
+.vgc-cart-item-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.vgc-quantity-btn {
+  background: #5d4037;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.vgc-quantity-btn:hover {
+  background: #3e2723;
+  transform: scale(1.1);
+}
+
+.vgc-quantity {
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+}
+
+.vgc-remove-btn {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vgc-remove-btn:hover {
+  background: #b71c1c;
+}
+
+.vgc-cart-total {
+  padding: 1.5rem;
+  border-top: 2px solid rgba(93, 64, 55, 0.2);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5d4037;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Auth Styles */
+.vgc-auth-container {
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.vgc-phone-input-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.vgc-country-code {
+  width: 80px;
+}
+
+/* Filter Styles */
+.vgc-filters {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.vgc-filter-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: #5d4037;
+  border: 2px solid #5d4037;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vgc-filter-btn:hover,
+.vgc-filter-btn.active {
+  background: #5d4037;
+  color: white;
+}
+
+/* Image Upload Styles */
+.vgc-image-upload {
+  border: 2px dashed rgba(93, 64, 55, 0.3);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vgc-image-upload:hover {
+  border-color: #5d4037;
+  background: rgba(93, 64, 55, 0.05);
+}
+
+.vgc-image-preview {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 1rem auto;
+  border-radius: 8px;
+}
